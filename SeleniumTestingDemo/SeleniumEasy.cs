@@ -26,7 +26,7 @@ namespace SeleniumTestingDemo
             //Wait for 5 seconds
             Thread.Sleep(5000);
 
-            noThanksLink.Click();
+            closeButton.Click();
 
             IWebElement inputForm = driver.FindElementByXPath("//ul[@id='treemenu']//a[contains(.,'Input Forms')]");
             inputForm.Click();
