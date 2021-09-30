@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
+using System.Threading;
+
 namespace SeleniumTestingDemo
 {
     [TestClass]
@@ -16,14 +18,19 @@ namespace SeleniumTestingDemo
         {
             ChromeDriver driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
-            driver.Url = "https://www.seleniumeasy.com/test/basic-checkbox-demo.html";
-            /*IWebElement noThanksLink = driver.FindElementByXPath("//a[contains(.,'No, thanks!')]");
+            driver.Url = "https://www.seleniumeasy.com/test";
+            IWebElement noThanksLink = driver.FindElementByCssSelector("#at-cv-lightbox-inner .at4-close");
+
+            //Wait for 5 seconds
+            Thread.Sleep(5000);
+
             noThanksLink.Click();
+
             IWebElement inputForm = driver.FindElementByXPath("//ul[@id='treemenu']//a[contains(.,'Input Forms')]");
             inputForm.Click();
 
             IWebElement checkboxDemoLink = driver.FindElementByXPath("//ul[@id='treemenu']//a[contains(.,'Checkbox Demo')]");
-            checkboxDemoLink.Click();*/
+            checkboxDemoLink.Click();
 
             IWebElement checkbox = driver.FindElementByCssSelector("#isAgeSelected");
             bool checkboxStatus = checkbox.Selected;
