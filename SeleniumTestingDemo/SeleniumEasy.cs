@@ -20,12 +20,14 @@ namespace SeleniumTestingDemo
             ChromeDriver driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
             driver.Url = "https://www.seleniumeasy.com/test";
-            IWebElement noThanksLink = driver.FindElementByCssSelector("#at-cv-lightbox-inner .at4-close");
+            
+            //Close pop up
+            IWebElement closeButton = driver.FindElementByCssSelector("#at-cv-lightbox-inner .at4-close");
 
             //Wait for 5 seconds
             Thread.Sleep(5000);
 
-            noThanksLink.Click();
+            closeButton.Click();
 
             IWebElement inputForm = driver.FindElementByXPath("//ul[@id='treemenu']//a[contains(.,'Input Forms')]");
             inputForm.Click();
