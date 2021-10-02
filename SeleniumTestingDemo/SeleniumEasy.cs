@@ -8,12 +8,16 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
 using System.Threading;
 using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium.Interactions;
+using System.Collections.ObjectModel;
 
 namespace SeleniumTestingDemo
 {
     [TestClass]
     public class SeleniumEasy
     {
+        private TestContext context;
+
         [TestMethod]
         public void ValidateCheckbox()
         {
@@ -190,6 +194,87 @@ namespace SeleniumTestingDemo
             driver.Close();
             driver.Quit();
 
+        }
+
+        [TestMethod]
+        public void TakeScreenshot()
+        {
+            ChromeDriver driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
+            driver.Url = "https://www.seleniumeasy.com/test";
+
+            ITakesScreenshot takesScreenshot = driver as ITakesScreenshot;
+            takesScreenshot.GetScreenshot().SaveAsFile("screenshot.jpeg", ScreenshotImageFormat.Jpeg);
+
+            driver.Close();
+            driver.Quit();
+        }
+
+        [TestMethod]
+        public void DrangAndDrop()
+        {
+            ChromeDriver driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
+            driver.Url = "https://www.seleniumeasy.com/test/drag-and-drop-demo.html";
+
+            IWebElement source = driver.FindElementByXPath("//span[text()='Draggable 3']");
+            IWebElement target = driver.FindElementByCssSelector("#mydropzone");
+
+
+            Actions action = new Actions(driver);
+            action.DragAndDrop(source, target);
+            action.Perform();
+
+            action.ContextClick();
+
+            action.DoubleClick();
+
+            action.MoveToElement(target);
+        }
+
+        [TestMethod]
+        public void WindowHandles()
+        {
+            ChromeDriver driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
+            driver.Url = "https://www.seleniumeasy.com/test";
+            string window = driver.CurrentWindowHandle; // window1
+
+            // clicking on a button which opens a new tab
+            //
+
+            IList<string> windows = driver.WindowHandles.ToList(); //window1, window2
+
+            foreach (string windowName in windows) 
+            {
+                if(!windowName.Equals(window))
+                {
+                    driver.SwitchTo().Window(windowName);
+                }
+            }
+
+
+            //driver.SwitchTo().Frame("Xpath of Frame");
+            //driver.SwitchTo().Frame(0);   // frameindex
+            //driver.SwitchTo().Frame("framename");
+            IWebElement source = driver.FindElementByXPath("//span[text()='Draggable 3']");
+            source.Click();
+
+            //to come out of iframe
+            driver.SwitchTo().DefaultContent();
+
+            driver.Close();
+            driver.Quit();
+        }
+
+        [TestCleanup]
+
+        public void CleanUp()
+        {
+            if(context.CurrentTestOutcome == UnitTestOutcome.Failed)
+            {
+                
+            }
         }
 
     }
