@@ -28,7 +28,7 @@ It mainly supports browsers like Firefox, Chrome, Safari and Internet Explorer. 
 	Cannot automate Desktop Applications\
 	Cannot automate Captcha\
 	Require programming knowledge\
-	No dedicated owner in case any support is required.\
+	No dedicated owner in case any support is required.
 
 **What is the current stable version of Selenium ?**\
 	 3.141.59
@@ -50,7 +50,7 @@ It mainly supports browsers like Firefox, Chrome, Safari and Internet Explorer. 
 	Syntax - Xpath=//tagname[@attribute='attributevalue']
 
 **What will happen if there are multiple elements found for a single xpath ?**\
-	It will always pick the first web element.\
+	It will always pick the first web element.
 
 **Difference between FindElement() and FindElements() ?**\
 	Find Element command is used to uniquely identify a (one) web element within the web page.\
@@ -91,23 +91,23 @@ It mainly supports browsers like Firefox, Chrome, Safari and Internet Explorer. 
 	5. BrowserDriver will send the response back to Selenium Client Library over HTTP protocol via JSON Wire Protocol
 
 **How to launch a url ?**\
+	
 	IWebDriver driver = new ChromeDriver();
 	driver.Url = "https://www.seleniumeasy.com/test"; 
 
 **What are the browser navigation commands ?**\
-	//to go back
+	
+	//to go back\
         driver.Navigate().Back();
-
-        //to go forward
+        //to go forward\
         driver.Navigate().Forward();
-
-        //to refresh
+        //to refresh\
         driver.Navigate().Refresh();
-
-        //Go to another URL
+        //Go to another URL\
         driver.Navigate().GoToUrl("https://myntra.com");
 
-**How to maximize a window ?**\
+**How to maximize a window ?**\	
+
 	IWebDriver driver = new ChromeDriver();
 	driver.Manage().Window.Maximize();
 
@@ -116,13 +116,32 @@ It mainly supports browsers like Firefox, Chrome, Safari and Internet Explorer. 
 
 **How to select a dropdown ? What are the methods available to select a dropdown value ?**\
 
+code for selecting item from Drop Down:\
+IWebElement EducationDropDownElement = driver.FindElement(By.Name("education"));
+SelectElement SelectAnEducation = new SelectElement(EducationDropDownElement);\
+
+There are 3 ways to select drop down item:\
+i)Select by Text\
+ii) Select by Index \
+iii) Select by Value
+
+Select by Text:\
+SelectAnEducation.SelectByText("College");//There are 3 items - Jr.High, HighSchool, College\
+
+Select by Index:\
+SelectAnEducation.SelectByIndex(2);//Index starts from 0. so, 0 = Jr.High 1 = HighSchool 2 = College\
+
+Select by Value:\
+//This value should be same as the value attribute in HTML\
+SelectAnEducation.SelectByValue("College");//There are 3 values - Jr.High, HighSchool, College
+
 **How to fetch the text of a web element ?**\
 	element.Text
 
 **How to select the checkbox and radio button ?**\
 	using click() method
 
-**How to handle Frames in xpath ?**\
+**How to handle Frames in xpath ?**\	
 	driver.SwitchTo().Frame("Xpath of Frame");
 	or
 	driver.SwitchTo().Frame(0);   // frameindex
@@ -130,12 +149,11 @@ It mainly supports browsers like Firefox, Chrome, Safari and Internet Explorer. 
 	driver.SwitchTo().Frame("framename");
 
 **How to switch to a new window ? Which is the method used ?**\
- 	string window = driver.CurrentWindowHandle; // window1
+	string window = driver.CurrentWindowHandle;
 
-        // clicking on a button which opens a new tab
-        //
+        // clicking on a button which opens a new tab\
 
-        IList<string> windows = driver.WindowHandles.ToList(); //window1, window2
+        IList<string> windows = driver.WindowHandles.ToList();
         foreach (string windowName in windows) 
         {
             if(!windowName.Equals(window))
@@ -145,26 +163,28 @@ It mainly supports browsers like Firefox, Chrome, Safari and Internet Explorer. 
         }
 
 **What is the difference between driver.CurrentWindowHandle and driver.WindowHandles ?**\
-  driver.CurrentWindowHandle returns the address of the current browser tab, where the control is. It's return type is String
+  driver.CurrentWindowHandle returns the address of the current browser tab, where the control is. It's return type is String\
 
 	driver.WindowHandles returns address of all open browser tabs and its return type is collection of String
 
 **How can I perform drag and drop ?**\
-	Use Actions Class 
+	//Use Actions Class
 	IWebElement source = driver.FindElement(By.XPath("//span[text()='Draggable 3']"));
        	IWebElement target = driver.FindElement(By.CssSelector("#mydropzone"));
-
        	Actions action = new Actions(driver);
-        	action.DragAndDrop(source, target);
+        action.DragAndDrop(source, target);
        	action.Perform();
 
 **How to take a screenshot in selenium ?**\
-	We have to cast driver to an Interface ITakesScreenshot;
+	We have to cast driver to an Interface ITakesScreenshot;\
 	ITakesScreenshot takesScreenshot = driver as ITakesScreenshot;
         takesScreenshot.GetScreenshot().SaveAsFile("screenshot.jpeg", ScreenshotImageFormat.Jpeg);
 
 **What are the different waits in selenium ? Which is best ?**\
 	Implicit Wait\
+	The Implicit Wait in Selenium is used to tell the web driver to wait for a certain amount of time before it throws a “No Such Element Exception”. The default setting is 0. Once we set the time, the web driver will wait for the element for that time before throwing an exception.\
+	
+	
 	Explicit Wait\
 	Fluent Wait\
 
@@ -181,11 +201,11 @@ if(browser.equalsIgnoreCase("firefox")){
 			driver = new ChromeDriver(“//path);
 
 **How To Handle Alerts ?**\
-            //Handle alert
+	    //Handle alert
             IAlert alert = driver.SwitchTo().Alert();
             Console.WriteLine(alert.Text);
 	
-           //To enter text on an alert
+            //To enter text on an alert
             alert.SendKeys("This is a sample alert");
 
             //To cancel alert
@@ -196,8 +216,14 @@ if(browser.equalsIgnoreCase("firefox")){
 	
             //to set auth credentials in alert
             alert.SetAuthenticationCredentials("username", "password");
-
-
-
+	   
+**What are the different exceptions in selenium ?**\
+*NoSuchElementException* – The element is not present in the DOM when the search operation is performed.\
+*StaleElementReferenceException* – The web element is present in the DOM when the search is initiated but the element might have become stale (or its state in the DOM could have changed) when the search call is made.\
+*ElementNotVisibleException* – The web element is present in the DOM but it is not yet visible when the search process is initiated.\
+*ElementNotSelectableException* – The element is present on the page but it cannot be selected.\
+*NoSuchFrameException* – The WebDriver tries switching to a frame which is not a valid one.\
+*NoAlertPresentException* – The WebDriver attempts switching to an alert window which is not yet available.\
+*NoSuchWindowException* – The WebDriver attempts switching to a window that is not a valid one.
 
 
