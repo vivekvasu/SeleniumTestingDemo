@@ -86,10 +86,10 @@ It mainly supports browsers like Firefox, Chrome, Safari and Internet Explorer. 
 **How selenium works (Architecture) ?**\
   ![image](https://user-images.githubusercontent.com/26665783/135740894-0f224c4c-14d4-438f-930e-a1ec7acbcfa0.png)
 
-	1. Selenium executes commands with Selenium Client Library (Java,C#,Python,Js,Ruby)\
-	2. JSON Wire Protocol receives the command and convert it to a JSON format and send a REST API request to BrowserDriver over HTTP protocol\
-	3. WebDriver will direct the request to the browser server\
-	4. Browser will perform the operation and will communicate the response back to the BrowserDriver\
+	1. Selenium executes commands with Selenium Client Library (Java,C#,Python,Js,Ruby)
+	2. JSON Wire Protocol receives the command and convert it to a JSON format and send a REST API request to BrowserDriver over HTTP protocol
+	3. WebDriver will direct the request to the browser server
+	4. Browser will perform the operation and will communicate the response back to the BrowserDriver
 	5. BrowserDriver will send the response back to Selenium Client Library over HTTP protocol via JSON Wire Protocol
 
 **How to launch a url ?**\
@@ -169,8 +169,7 @@ SelectAnEducation.SelectByValue("College");//There are 3 values - Jr.High, HighS
 **What is the difference between driver.CurrentWindowHandle and driver.WindowHandles ?**\
 
   driver.CurrentWindowHandle returns the address of the current browser tab, where the control is. It's return type is String\
-
-	driver.WindowHandles returns address of all open browser tabs and its return type is collection of String
+  driver.WindowHandles returns address of all open browser tabs and its return type is collection of String
 
 **How can I perform drag and drop ?**\
 
