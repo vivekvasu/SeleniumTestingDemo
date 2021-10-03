@@ -50,6 +50,7 @@ It mainly supports browsers like Firefox, Chrome, Safari and Internet Explorer. 
 	Syntax - Xpath=//tagname[@attribute='attributevalue']
 
 **What will happen if there are multiple elements found for a single xpath ?**\
+
 	It will always pick the first web element.
 
 **Difference between FindElement() and FindElements() ?**\
@@ -62,6 +63,7 @@ It mainly supports browsers like Firefox, Chrome, Safari and Internet Explorer. 
 	List<IWebElement> listOfElements = driver.findElements(By.xpath("//div"));
 
 **What is the difference between / (single slash) and // (double slash) in xpath ?**\
+	
 	Single Slash “/” – Single slash is used to create Xpath with absolute path i.e. the xpath would be created to start selection from the document node/start node.\
 
 	Double Slash “//” – Double slash is used to create Xpath with relative path i.e. the xpath would be created to start selection from anywhere within the document.\
@@ -142,6 +144,7 @@ SelectAnEducation.SelectByValue("College");//There are 3 values - Jr.High, HighS
 	using click() method
 
 **How to handle Frames in xpath ?**\	
+
 	driver.SwitchTo().Frame("Xpath of Frame");
 	or
 	driver.SwitchTo().Frame(0);   // frameindex
@@ -149,6 +152,7 @@ SelectAnEducation.SelectByValue("College");//There are 3 values - Jr.High, HighS
 	driver.SwitchTo().Frame("framename");
 
 **How to switch to a new window ? Which is the method used ?**\
+	
 	string window = driver.CurrentWindowHandle;
 
         // clicking on a button which opens a new tab\
@@ -163,12 +167,14 @@ SelectAnEducation.SelectByValue("College");//There are 3 values - Jr.High, HighS
         }
 
 **What is the difference between driver.CurrentWindowHandle and driver.WindowHandles ?**\
+
   driver.CurrentWindowHandle returns the address of the current browser tab, where the control is. It's return type is String\
 
 	driver.WindowHandles returns address of all open browser tabs and its return type is collection of String
 
 **How can I perform drag and drop ?**\
-	//Use Actions Class
+
+	//Use Actions Class\
 	IWebElement source = driver.FindElement(By.XPath("//span[text()='Draggable 3']"));
        	IWebElement target = driver.FindElement(By.CssSelector("#mydropzone"));
        	Actions action = new Actions(driver);
@@ -176,11 +182,13 @@ SelectAnEducation.SelectByValue("College");//There are 3 values - Jr.High, HighS
        	action.Perform();
 
 **How to take a screenshot in selenium ?**\
+
 	We have to cast driver to an Interface ITakesScreenshot;\
 	ITakesScreenshot takesScreenshot = driver as ITakesScreenshot;
         takesScreenshot.GetScreenshot().SaveAsFile("screenshot.jpeg", ScreenshotImageFormat.Jpeg);
 
 **What are the different waits in selenium ? Which is best ?**\
+
 	Implicit Wait\
 	The Implicit Wait in Selenium is used to tell the web driver to wait for a certain amount of time before it throws a “No Such Element Exception”. The default setting is 0. Once we set the time, the web driver will wait for the element for that time before throwing an exception.\
 	
@@ -201,6 +209,7 @@ if(browser.equalsIgnoreCase("firefox")){
 			driver = new ChromeDriver(“//path);
 
 **How To Handle Alerts ?**\
+
 	    //Handle alert
             IAlert alert = driver.SwitchTo().Alert();
             Console.WriteLine(alert.Text);
