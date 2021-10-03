@@ -1,55 +1,63 @@
 # Selenium
-**What is Selenium ?**\
+**What is Selenium ?**
+
 Selenium Webdriver is an open-source collection of APIs which is used for testing web applications. \
 Selenium Webdriver tool is used for automating web application testing to verify whether the application is working as expected.\
 It mainly supports browsers like Firefox, Chrome, Safari and Internet Explorer. It also permits you to execute cross-browser testing.
 	
 
-**Can selenium automate Captcha & Window Pop Ups ?**\
+**Can selenium automate Captcha & Window Pop Ups ?**
+
   No We cannot automate captcha\
   Selenium cannot handle windows pop ups also. We have to depend on 3rd party tools like **AutoIT** to autoamte it.
 
 
-**What are the different components in Selenium Suite ?**\
-	Selenium IDE\
-	Selenium RC\
-	Selenium WebDriver\
+**What are the different components in Selenium Suite ?**
+
+	Selenium IDE
+	Selenium RC
+	Selenium WebDriver
 	Selenium Grid
 
-**What are the advantages of Selenium ?**\
-	It is OpenSource\
-	Supports Multi Language (Python,C#,Java,Ruby,Js)\
-	Supports Multiple browsers (Chrome,Firefox,Edge,Safari,Opera,IE )\
-	Large community support\
-	Supports Cross Browser testing\
+**What are the advantages of Selenium ?**
+
+	It is OpenSource
+	Supports Multi Language (Python,C#,Java,Ruby,Js)
+	Supports Multiple browsers (Chrome,Firefox,Edge,Safari,Opera,IE )
+	Large community support
+	Supports Cross Browser testing
 	Supports Parallel testing
 
 **What are the disadvantages of selenium ?**
-	Cannot automate Desktop Applications\
-	Cannot automate Captcha\
-	Require programming knowledge\
+
+	Cannot automate Desktop Applications
+	Cannot automate Captcha
+	Require programming knowledge
 	No dedicated owner in case any support is required.
 
-**What is the current stable version of Selenium ?**\
+**What is the current stable version of Selenium ?**
+
 	 3.141.59
 
 
-**What are the different methods that selenium supports to identify webelements ?**\
-	ID\
-	Name\
-	Class Name\
-	Tag Name\
-	Link Text\
-	Partial LinkText\
-	XPath\
-	CSS Selector
+**What are the different methods that selenium supports to identify webelements ?**
 
-**What is Xpath ?**\
+	By.ID
+	By.Name
+	By.ClassName
+	By.TagName
+	By.LinkText
+	By.PartialLinkText
+	By.XPath
+	By.CSSSelector
+
+**What is Xpath ?**
+
 	XPath in Selenium is an XML path used for navigation through the HTML structure of the page.\
 	It is a syntax or language for finding any element on a web page using XML path expression.\
 	Syntax - Xpath=//tagname[@attribute='attributevalue']
 
-**What will happen if there are multiple elements found for a single xpath ?**\
+**What will happen if there are multiple elements found for a single xpath ?**
 
 	It will always pick the first web element.
 
@@ -69,13 +77,13 @@ It mainly supports browsers like Firefox, Chrome, Safari and Internet Explorer. 
 	Double Slash “//” – Double slash is used to create Xpath with relative path i.e. the xpath would be created to start selection from anywhere within the document.\
 
 **What is absolute and relative xpath? Which is better ? Why ?**\
-	Absolute XPath:
-	—-----------------
+	Absolute XPath:\
+	—-----------------\
   It is the direct way to find the element, but the disadvantage of the absolute XPath is that if there are any changes made in the path of the element then that XPath fails.\
 	It starts with single forward slash (/)\
 	Example - /html/body/div[2]/div[1]/div/h4[1]/b/html[1]/body[1]/div[2]/div[1]/div[1]/h4[1]/b[1]
 
-	Relative Xpath
+	Relative Xpath\
   —-----------------\
   It  starts from the middle of HTML DOM structure.\ 
   It starts with double forward slash (//). It can search elements anywhere on the webpage, means no need to write a long xpath and you can start from the middle 	of HTML DOM structure. 
@@ -83,7 +91,8 @@ It mainly supports browsers like Firefox, Chrome, Safari and Internet Explorer. 
 
 	Relative Xpath is always preferred as it is not a complete path from the root element.
 
-**How selenium works (Architecture) ?**\
+**How selenium works (Architecture) ?**
+
   ![image](https://user-images.githubusercontent.com/26665783/135740894-0f224c4c-14d4-438f-930e-a1ec7acbcfa0.png)
 
 	1. Selenium executes commands with Selenium Client Library (Java,C#,Python,Js,Ruby)
@@ -97,23 +106,24 @@ It mainly supports browsers like Firefox, Chrome, Safari and Internet Explorer. 
 	IWebDriver driver = new ChromeDriver();
 	driver.Url = "https://www.seleniumeasy.com/test"; 
 
-**What are the browser navigation commands ?**\
+**What are the browser navigation commands ?**
 	
-	//to go back\
+	//to go back
         driver.Navigate().Back();
-        //to go forward\
+        //to go forward
         driver.Navigate().Forward();
-        //to refresh\
+        //to refresh
         driver.Navigate().Refresh();
-        //Go to another URL\
+        //Go to another URL
         driver.Navigate().GoToUrl("https://myntra.com");
 
-**How to maximize a window ?**\	
+**How to maximize a window ?**
 
 	IWebDriver driver = new ChromeDriver();
 	driver.Manage().Window.Maximize();
 
-**How to get PageTitle ?**\
+**How to get PageTitle ?**
+
 	driver.Title;
 
 **How to select a dropdown ? What are the methods available to select a dropdown value ?**\
@@ -166,36 +176,77 @@ SelectAnEducation.SelectByValue("College");//There are 3 values - Jr.High, HighS
             }
         }
 
-**What is the difference between driver.CurrentWindowHandle and driver.WindowHandles ?**\
+**What is the difference between driver.CurrentWindowHandle and driver.WindowHandles ?**
 
   driver.CurrentWindowHandle returns the address of the current browser tab, where the control is. It's return type is String\
   driver.WindowHandles returns address of all open browser tabs and its return type is collection of String
 
 **How can I perform drag and drop ?**\
 
-	//Use Actions Class\
+	//Use Actions Class
 	IWebElement source = driver.FindElement(By.XPath("//span[text()='Draggable 3']"));
        	IWebElement target = driver.FindElement(By.CssSelector("#mydropzone"));
        	Actions action = new Actions(driver);
         action.DragAndDrop(source, target);
        	action.Perform();
 
-**How to take a screenshot in selenium ?**\
+**How to take a screenshot in selenium ?**
 
 	We have to cast driver to an Interface ITakesScreenshot;\
 	ITakesScreenshot takesScreenshot = driver as ITakesScreenshot;
         takesScreenshot.GetScreenshot().SaveAsFile("screenshot.jpeg", ScreenshotImageFormat.Jpeg);
 
-**What are the different waits in selenium ? Which is best ?**\
+**What are the different waits in selenium ? Which is best ?**
 
-	Implicit Wait\
-	The Implicit Wait in Selenium is used to tell the web driver to wait for a certain amount of time before it throws a “No Such Element Exception”. The default setting is 0. Once we set the time, the web driver will wait for the element for that time before throwing an exception.\
+	Implicit Wait
+	The Implicit Wait in Selenium is used to tell the web driver to wait for a certain amount of time before it throws a “No Such Element Exception”. \The default setting is 0. Once we set the time, the web driver will wait for the element for that time before throwing an exception.\
+	
+	Synatx : driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 	
 	
-	Explicit Wait\
-	Fluent Wait\
+	Explicit Wait
+	Explicit wait instructs the execution to wait for some time until some condition is achieved. Some of those conditions to be attained are:
 
-**What is cross browser testing ? How can we achieve it in selenium ?**\
+	elementToBeClickable
+	elementToBeSelected
+	presenceOfElementLocated
+	
+	Synatx 
+	WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+        IWebElement logo = wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath("//div[@class='desktop-logoContainer']//a")));
+        logo.Click();
+
+	WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+        wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+        IWebElement logo1 = wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//div[@class='desktop-logoContainer']//a")));
+        bool isDisplayed = logo.Displayed;
+
+	
+	Fluent Wait
+	Fluent wait is an extention of Explicit wait where in we can specify a polling interval time, also user can ignore exceptions that may occur during the polling period using the IgnoreExceptionTypes command.
+	
+	DefaultWait<IWebDriver> fluentWait = new DefaultWait<IWebDriver>(driver);
+        fluentWait.Timeout = TimeSpan.FromSeconds(10);
+        fluentWait.PollingInterval = TimeSpan.FromMilliseconds(1000);
+        fluentWait.IgnoreExceptionTypes(typeof(NoSuchElementException));
+        IWebElement searchResult = fluentWait.Until(x => x.FindElement(By.XPath("//div[@class='desktop-logoContainer']//a")));
+        searchResult.Click();
+	
+	
+	Best deal is to use Explicit Wait as we can specify different conditional waits like 
+	alertIsPresent()
+	elementSelectionStateToBe()
+	elementToBeClickable()
+	elementToBeSelected()
+	frameToBeAvaliableAndSwitchToIt()
+	invisibilityOfTheElementLocated()
+	titleIs()
+	titleContains()
+	visibilityOf()
+	visibilityOfAllElements()
+	visibilityOfElementLocated()
+	
+**What is cross browser testing ? How can we achieve it in selenium ?**
 	Cross Browser Testing is a type of functional test to check that your web application works as expected in different browsers and in different browser versions.\ 
 Example: Checking whether a test case is working on Chrome 96, Firefox,I.E and Chrome 90
 
@@ -207,7 +258,7 @@ if(browser.equalsIgnoreCase("firefox")){
 			//create chrome instance
 			driver = new ChromeDriver(“//path);
 
-**How To Handle Alerts ?**\
+**How To Handle Alerts ?**
 
 	    //Handle alert
             IAlert alert = driver.SwitchTo().Alert();
@@ -226,6 +277,7 @@ if(browser.equalsIgnoreCase("firefox")){
             alert.SetAuthenticationCredentials("username", "password");
 	   
 **What are the different exceptions in selenium ?**\
+
 *NoSuchElementException* – The element is not present in the DOM when the search operation is performed.\
 *StaleElementReferenceException* – The web element is present in the DOM when the search is initiated but the element might have become stale (or its state in the DOM could have changed) when the search call is made.\
 *ElementNotVisibleException* – The web element is present in the DOM but it is not yet visible when the search process is initiated.\
