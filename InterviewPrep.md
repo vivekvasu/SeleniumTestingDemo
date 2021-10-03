@@ -286,4 +286,26 @@ if(browser.equalsIgnoreCase("firefox")){
 *NoAlertPresentException* – The WebDriver attempts switching to an alert window which is not yet available.\
 *NoSuchWindowException* – The WebDriver attempts switching to a window that is not a valid one.
 
+**What are the different methods in action class ?**
+
+ 	    Actions action = new Actions(driver);
+		
+	    //right click
+            action.ContextClick();
+
+            action.DoubleClick();
+
+            action.MoveToElement(target);
+
+**What is the differnce between driver.Quit() and  driver.Close() ?**
+
+The differences between close() and quit() methods are listed below.
+
+	close()
+	method shall close the browser which is in focus.
+	closes the active WebDriver instance.
+
+	quit()
+	method closes all the browsers.
+	method closes all the active WebDriver instances.
 
