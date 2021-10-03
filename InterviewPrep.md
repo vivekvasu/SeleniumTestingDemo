@@ -306,6 +306,6 @@ The differences between close() and quit() methods are listed below.
 	closes the active WebDriver instance.
 
 	quit()
-	method closes all the browsers.
-	method closes all the active WebDriver instances.
+	closes all the browsers.
+	closes all the active WebDriver instances.
 
